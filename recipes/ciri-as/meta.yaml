@@ -6,8 +6,13 @@ package:
   version: {{ version }}
 
 source:
-  url: https://sourceforge.net/projects/ciri/files/CIRI-AS/CIRI_AS_v{{ version }}.pl/download
-  sha256: c8d8ab3f436198ed7c74382d5a48a2317ac5dcdde0762cc96dcb06948f0cc15d
+  - url: https://sourceforge.net/projects/ciri/files/CIRI-AS/CIRI_AS_v{{ version }}.pl/download
+    sha256: c8d8ab3f436198ed7c74382d5a48a2317ac5dcdde0762cc96dcb06948f0cc15d
+    fn: CIRI_AS_v{{ version }}.pl
+
+  - url: https://sourceforge.net/projects/ciri/files/CIRI-AS/LICENSE.txt/download
+    sha256: ebf5492085281af1aad4543e453461601d15f8dcf9fc600be52e26e7ab040f59 
+    fn: LICENSE.txt
 
 
 build:
@@ -23,16 +28,16 @@ requirements:
   run:
     - perl >=5.12
     - bwa
-    - CIRI2
 
 test:
   commands:
-    - perl $PREFIX/bin/CIRI_AS.pl -H || true
+    - perl $PREFIX/bin/CIRI_AS.pl -H 2>&1 | grep -q "CIRI-AS"
 
 about:
   home: "https://github.com/bioinfo-biols/CIRI-cookbook"
   summary: "CIRI-AS is a detection tool for circRNA internal components and alternative splicing events."
   license: GPL-2.0
+  license_file: LICENSE.txt
   dev_url: "https://github.com/bioinfo-biols/CIRI-cookbook/blob/master/source/CIRI-AS.md"
   doc_url: "https://ciri-cookbook.readthedocs.io/en/latest/CIRI-AS.html"
 
