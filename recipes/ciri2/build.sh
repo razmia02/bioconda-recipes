@@ -11,7 +11,7 @@ unzip download
 
 # Copy the perl script to binary
 
-cp CIRI_v2.0.6/CIRI2.pl $PREFIX/bin/CIRI2.pl
+cp CIRI_v*/CIRI*.pl $PREFIX/bin/CIRI2.pl
 
 # Make it executable 
 
